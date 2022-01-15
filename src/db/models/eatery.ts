@@ -26,6 +26,7 @@ const schema = new Schema<Eatery>({
   },
   zipCode: {
     required: [true, 'Zip code is required!'],
+    minlength: 6,
     validate: {
       validator: (postal: string) => {
           if (postal.length > 6) return false;

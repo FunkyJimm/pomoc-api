@@ -17,7 +17,9 @@ const schema = new mongoose_1.Schema({
         required: [true, 'City is required!'],
     },
     zipCode: {
+        type: String,
         required: [true, 'Zip code is required!'],
+        minlength: 6,
         validate: {
             validator: (postal) => {
                 if (postal.length > 6)

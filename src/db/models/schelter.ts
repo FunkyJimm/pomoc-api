@@ -26,7 +26,9 @@ const schema = new Schema<Shelter>({
     required: [true, 'City is required!'],
   },
   zipCode: {
+    type: String,
     required: [true, 'Zip code is required!'],
+    minlength: 6,
     validate: {
       validator: (postal: string) => {
           if (postal.length > 6) return false;
