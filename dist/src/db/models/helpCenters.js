@@ -4,7 +4,7 @@ const mongoose_1 = require("mongoose");
 const schema = new mongoose_1.Schema({
     name: {
         type: String,
-        required: [true, 'Shelter name is required!'],
+        required: [true, 'Eatery name is required!'],
         minlength: 2,
         maxlength: 256,
     },
@@ -41,14 +41,10 @@ const schema = new mongoose_1.Schema({
         type: Number,
         required: false,
     },
-    totalNumberOfBeds: {
-        type: Number,
-        required: true,
-    },
-    occupiedNumberOfBeds: {
-        type: Number,
-        required: false,
+    description: {
+        type: String,
+        required: [true, 'You need to add description about this help center!'],
     },
 });
-const ShelterModel = (0, mongoose_1.model)('Shelter', schema);
-exports.default = ShelterModel;
+const HelpCentersModel = (0, mongoose_1.model)('HelpCenters', schema);
+exports.default = HelpCentersModel;

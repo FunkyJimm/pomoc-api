@@ -1,5 +1,9 @@
 import express from 'express';
+import dbConnect from './src/db/db-connect';
+
 const app = express();
+
+dbConnect();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
