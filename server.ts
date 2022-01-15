@@ -1,4 +1,5 @@
 import express from 'express';
+import usersRoutes from './src/routes/users';
 import dbConnect from './src/db/db-connect';
 
 const app = express();
@@ -7,6 +8,8 @@ dbConnect();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use('/', usersRoutes);
 
 app.get('/', (req, res) => {
   res.send('Pomoc dla bezdomnych api by FunkyJimm. All rights reserved.');
