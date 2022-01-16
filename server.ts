@@ -1,4 +1,5 @@
 import express from 'express';
+import eateriesRoutes from './src/routes/eatery-route';
 import informationsRoutes from './src/routes/informations';
 import sheltersRoutes from './src/routes/shelters';
 import usersRoutes from './src/routes/users';
@@ -11,6 +12,7 @@ dbConnect();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use('/', eateriesRoutes);
 app.use('/', informationsRoutes);
 app.use('/', sheltersRoutes);
 app.use('/', usersRoutes);

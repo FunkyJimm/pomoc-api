@@ -25,6 +25,7 @@ const schema = new Schema<Eatery>({
     required: [true, 'City is required!'],
   },
   zipCode: {
+    type: String,
     required: [true, 'Zip code is required!'],
     minlength: 6,
     validate: {
@@ -49,6 +50,7 @@ const schema = new Schema<Eatery>({
   mealsAvailability: {
     type: Boolean,
     required: false,
+    default: false,
   },
 });
 

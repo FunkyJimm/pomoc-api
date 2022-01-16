@@ -17,6 +17,7 @@ const schema = new mongoose_1.Schema({
         required: [true, 'City is required!'],
     },
     zipCode: {
+        type: String,
         required: [true, 'Zip code is required!'],
         minlength: 6,
         validate: {
@@ -45,6 +46,7 @@ const schema = new mongoose_1.Schema({
     mealsAvailability: {
         type: Boolean,
         required: false,
+        default: false,
     },
 });
 const EateryModel = (0, mongoose_1.model)('Eatery', schema);
