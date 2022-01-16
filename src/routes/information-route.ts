@@ -1,5 +1,5 @@
 import express from 'express';
-import information from '../controllers/informations';
+import information from '../controllers/information-controller';
 
 const informationRouter = express.Router();
 

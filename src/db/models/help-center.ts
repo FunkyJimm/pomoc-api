@@ -25,6 +25,7 @@ const schema = new Schema<HelpCenters>({
     required: [true, 'City is required!'],
   },
   zipCode: {
+    type: String,
     required: [true, 'Zip code is required!'],
     minlength: 6,
     validate: {

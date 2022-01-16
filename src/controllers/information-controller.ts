@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import InformationService from "../services/information";
+import InformationService from "../services/information-service";
 import Validators from "../utils/validators";
 
 // get all informations list
