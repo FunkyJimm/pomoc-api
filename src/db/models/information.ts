@@ -16,7 +16,7 @@ const schema = new Schema<Information>({
   },
   description: {
     type: String,
-    required: [true, 'You need to add description about this help center!'],
+    required: [true, 'You need to add description!'],
   },
   publicationDate: {
     type: Date,
