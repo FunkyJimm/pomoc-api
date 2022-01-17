@@ -12,15 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const eatery_service_1 = __importDefault(require("../services/eatery-service"));
+const information_service_1 = __importDefault(require("../services/information-service"));
 const validators_1 = __importDefault(require("../utils/validators"));
-// get all eateries list
-const getEateries = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// get all informations list
+const getInformations = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const eateries = yield eatery_service_1.default.getEateries();
+        const informations = yield information_service_1.default.getInformations();
         return res.status(200).send({
             status: 200,
-            data: eateries,
+            data: informations,
         });
     }
     catch (e) {
@@ -30,17 +30,17 @@ const getEateries = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
     }
 });
-// get eatery details
-const getEateryDetails = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.eateryId;
+// get information details
+const getInformationDetails = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.informationId;
     if (validators_1.default.idCheck(res, id)) {
         return;
     }
     try {
-        const eatery = yield eatery_service_1.default.getEateryDetails(id);
+        const information = yield information_service_1.default.getInformationDetails(id);
         return res.status(200).send({
             status: 200,
-            data: eatery,
+            data: information,
         });
     }
     catch (e) {
@@ -50,17 +50,17 @@ const getEateryDetails = (req, res) => __awaiter(void 0, void 0, void 0, functio
         });
     }
 });
-// add a eatery
-const addEatery = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// add a information
+const addInformation = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const content = req.body;
     if (validators_1.default.contentCheck(res, content)) {
         return;
     }
     try {
-        yield eatery_service_1.default.addEatery(content);
+        yield information_service_1.default.addInformation(content);
         return res.status(201).send({
             status: 201,
-            message: 'Eatery has been successfully added.',
+            message: 'Information has been successfully added.',
         });
     }
     catch (e) {
@@ -70,18 +70,18 @@ const addEatery = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
 });
-// update a eatery
-const updateEatery = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.eateryId;
+// update a information
+const updateInformation = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.informationId;
     const content = req.body;
     if (validators_1.default.idCheck(res, id) || validators_1.default.contentCheck(res, content)) {
         return;
     }
     try {
-        yield eatery_service_1.default.updateEatery(id, content);
+        yield information_service_1.default.updateInformation(id, content);
         return res.status(200).send({
             status: 200,
-            message: 'Eatery has been updated.',
+            message: 'Information has been updated.',
         });
     }
     catch (e) {
@@ -91,17 +91,17 @@ const updateEatery = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         });
     }
 });
-// delete a eatery
-const deleteEatery = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.eateryId;
+// delete a information
+const deleteInformation = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.informationId;
     if (validators_1.default.idCheck(res, id)) {
         return;
     }
     try {
-        yield eatery_service_1.default.deleteEatery(id);
+        yield information_service_1.default.deleteInformation(id);
         return res.status(200).send({
             status: 200,
-            message: 'Eatery has been deleted.',
+            message: 'Information has been deleted.',
         });
     }
     catch (e) {
@@ -112,9 +112,9 @@ const deleteEatery = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.default = {
-    getEateries,
-    getEateryDetails,
-    addEatery,
-    updateEatery,
-    deleteEatery,
+    getInformations,
+    getInformationDetails,
+    addInformation,
+    updateInformation,
+    deleteInformation,
 };

@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-interface HelpCenters {
+interface HelpCenter {
   name: string;
   address: string;
   city: string;
@@ -9,7 +9,7 @@ interface HelpCenters {
   description: string;
 }
 
-const schema = new Schema<HelpCenters>({
+const schema = new Schema<HelpCenter>({
   name: {
     type: String,
     required: [true, 'Eatery name is required!'],
@@ -53,6 +53,6 @@ const schema = new Schema<HelpCenters>({
   },
 });
 
-const HelpCentersModel = model<HelpCenters>('HelpCenters', schema);
+const HelpCentersModel = model<HelpCenter>('HelpCenter', schema);
 
 export default HelpCentersModel;

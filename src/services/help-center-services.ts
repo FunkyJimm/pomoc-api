@@ -1,4 +1,4 @@
-import { default as HelpCenter } from '../db/models/helpCenters';
+import { default as HelpCenter } from '../db/models/help-center';
 import Validators from '../utils/validators';
 
 const getHelpCenters = async function() {

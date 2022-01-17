@@ -18,7 +18,7 @@ const getEateries = async(req: Request, res: Response) => {
   }
 }
 
-// get eateries details
+// get eatery details
 const getEateryDetails = async(req: Request, res: Response) => {
   const id = req.params.eateryId;
   if (Validators.idCheck(res, id)) {
@@ -39,7 +39,7 @@ const getEateryDetails = async(req: Request, res: Response) => {
   }
 }
 
-// add a eateries
+// add a eatery
 const addEatery = async(req: Request, res: Response) => {
   const content = req.body;
   if (Validators.contentCheck(res, content)) {
@@ -60,7 +60,7 @@ const addEatery = async(req: Request, res: Response) => {
   }
 }
 
-// update a eateries
+// update a eatery
 const updateEatery = async(req: Request, res: Response) => {
   const id = req.params.eateryId;
   const content = req.body;
@@ -82,7 +82,7 @@ const updateEatery = async(req: Request, res: Response) => {
   }
 }
 
-// delete a eateries
+// delete a eatery
 const deleteEatery = async(req: Request, res: Response) => {
   const id = req.params.eateryId;
   if (Validators.idCheck(res, id)) {

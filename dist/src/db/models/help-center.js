@@ -48,5 +48,5 @@ const schema = new mongoose_1.Schema({
         required: [true, 'You need to add description about this help center!'],
     },
 });
-const HelpCentersModel = (0, mongoose_1.model)('HelpCenters', schema);
+const HelpCentersModel = (0, mongoose_1.model)('HelpCenter', schema);
 exports.default = HelpCentersModel;

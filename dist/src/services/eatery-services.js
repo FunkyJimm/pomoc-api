@@ -12,19 +12,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const help_center_1 = __importDefault(require("../db/models/help-center"));
+const eatery_1 = __importDefault(require("../db/models/eatery"));
 const validators_1 = __importDefault(require("../utils/validators"));
-const getHelpCenters = function () {
+const getEateries = function () {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const helpCenters = yield help_center_1.default.find();
-            if (Object.keys(helpCenters).length === 0) {
-                throw Error('Help centers list is empty.');
+            const eateries = yield eatery_1.default.find();
+            if (Object.keys(eateries).length === 0) {
+                throw Error('Eateries list is empty.');
             }
-            return helpCenters.map(helpCenter => ({
-                id: helpCenter.id,
-                name: helpCenter.name,
-                mealsAvailability: helpCenter.description,
+            return eateries.map(eatery => ({
+                id: eatery.id,
+                name: eatery.name,
+                mealsAvailability: eatery.mealsAvailability,
             }));
         }
         catch (e) {
@@ -32,41 +32,41 @@ const getHelpCenters = function () {
         }
     });
 };
-const getHelpCenterDetails = function (id) {
+const getEateryDetails = function (id) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const helpCenter = yield help_center_1.default.findById(id);
-            if (!helpCenter) {
-                throw Error(`Help center with Id: ${id} is not found.`);
+            const eatery = yield eatery_1.default.findById(id);
+            if (!eatery) {
+                throw Error(`Eatery with Id: ${id} is not found.`);
             }
-            return helpCenter;
+            return eatery;
         }
         catch (e) {
             throw Error(e.message);
         }
     });
 };
-const addHelpCenter = function (content) {
+const addEatery = function (content) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { name, address, city, zipCode, phone, description } = content;
+        const { name, address, city, zipCode, phone } = content;
         const publicationDate = Date.now();
-        const helpCenter = new help_center_1.default({ name, address, city, zipCode, phone, description, publicationDate });
+        const eatery = new eatery_1.default({ name, address, city, zipCode, phone, publicationDate });
         try {
-            yield helpCenter.save();
+            yield eatery.save();
         }
         catch (e) {
             throw Error(e.message);
         }
     });
 };
-const updateHelpCenter = function (id, content) {
+const updateEatery = function (id, content) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { name, address, city, zipCode, phone, description } = content;
+        const { name, address, city, zipCode, phone, mealsAvailability } = content;
         const updateDate = Date.now();
         try {
-            const helpCenter = yield help_center_1.default.findByIdAndUpdate(id, { name, address, city, zipCode, phone, description, updateDate }, validators_1.default.options);
-            if (!helpCenter) {
-                throw Error(`Help center with Id: ${id} is not found.`);
+            const eatery = yield eatery_1.default.findByIdAndUpdate(id, { name, address, city, zipCode, phone, mealsAvailability, updateDate }, validators_1.default.options);
+            if (!eatery) {
+                throw Error(`Eatery with Id: ${id} is not found.`);
             }
         }
         catch (e) {
@@ -74,12 +74,12 @@ const updateHelpCenter = function (id, content) {
         }
     });
 };
-const deleteHelpCenter = function (id) {
+const deleteEatery = function (id) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const helpCenter = yield help_center_1.default.findByIdAndDelete(id);
-            if (!helpCenter) {
-                throw Error(`Help center with Id: ${id} is not found.`);
+            const eatery = yield eatery_1.default.findByIdAndDelete(id);
+            if (!eatery) {
+                throw Error(`Eatery with Id: ${id} is not found.`);
             }
         }
         catch (e) {
@@ -88,9 +88,9 @@ const deleteHelpCenter = function (id) {
     });
 };
 exports.default = {
-    getHelpCenters,
-    getHelpCenterDetails,
-    addHelpCenter,
-    updateHelpCenter,
-    deleteHelpCenter,
+    getEateries,
+    getEateryDetails,
+    addEatery,
+    updateEatery,
+    deleteEatery,
 };
