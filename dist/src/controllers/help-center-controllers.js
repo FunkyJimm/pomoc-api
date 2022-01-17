@@ -12,12 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const help_center_service_1 = __importDefault(require("../services/help-center-service"));
+const help_center_services_1 = __importDefault(require("../services/help-center-services"));
 const validators_1 = __importDefault(require("../utils/validators"));
 // get all help centers list
 const getHelpCenters = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const helpCenters = yield help_center_service_1.default.getHelpCenters();
+        const helpCenters = yield help_center_services_1.default.getHelpCenters();
         return res.status(200).send({
             status: 200,
             data: helpCenters,
@@ -37,7 +37,7 @@ const getHelpCenterDetails = (req, res) => __awaiter(void 0, void 0, void 0, fun
         return;
     }
     try {
-        const helpCenter = yield help_center_service_1.default.getHelpCenterDetails(id);
+        const helpCenter = yield help_center_services_1.default.getHelpCenterDetails(id);
         return res.status(200).send({
             status: 200,
             data: helpCenter,
@@ -57,7 +57,7 @@ const addHelpCenter = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         return;
     }
     try {
-        yield help_center_service_1.default.addHelpCenter(content);
+        yield help_center_services_1.default.addHelpCenter(content);
         return res.status(201).send({
             status: 201,
             message: 'Help center has been successfully added.',
@@ -78,7 +78,7 @@ const updateHelpCenter = (req, res) => __awaiter(void 0, void 0, void 0, functio
         return;
     }
     try {
-        yield help_center_service_1.default.updateHelpCenter(id, content);
+        yield help_center_services_1.default.updateHelpCenter(id, content);
         return res.status(200).send({
             status: 200,
             message: 'Help center has been updated.',
@@ -98,7 +98,7 @@ const deleteHelpCenter = (req, res) => __awaiter(void 0, void 0, void 0, functio
         return;
     }
     try {
-        yield help_center_service_1.default.deleteHelpCenter(id);
+        yield help_center_services_1.default.deleteHelpCenter(id);
         return res.status(200).send({
             status: 200,
             message: 'Help center has been deleted.',

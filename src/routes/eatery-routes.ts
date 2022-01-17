@@ -1,5 +1,5 @@
 import express from 'express';
-import eatery from '../controllers/eatery-controller';
+import eatery from '../controllers/eatery-controllers';
 
 const eateryRouter = express.Router();
 

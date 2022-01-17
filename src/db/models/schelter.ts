@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import Validators from '../../utils/validators';
 
 interface Shelter {
   name: string;
@@ -29,20 +30,7 @@ const schema = new Schema<Shelter>({
     type: String,
     required: [true, 'Zip code is required!'],
     minlength: 6,
-    validate: {
-      validator: (postal: string) => {
-          if (postal.length > 6) return false;
-
-          for (let i = 0; i < postal.length; i++) {
-              if (i == 2) {
-                  if (postal[i] !== "-") return false;
-              } else {
-                  if (isNaN(Number(postal[i]))) return false;
-              }
-          } return true;
-      },
-      message: 'You need to add correct zip code!'
-    },
+    validate: Validators.zipCodeValidator,
   },
   phone: {
     type: Number,

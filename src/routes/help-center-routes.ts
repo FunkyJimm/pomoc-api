@@ -1,5 +1,5 @@
 import express from 'express';
-import helpCenter from '../controllers/help-center-controller';
+import helpCenter from '../controllers/help-center-controllers';
 
 const helpCenterRouter = express.Router();
 

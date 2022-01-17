@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const login_service_1 = __importDefault(require("../services/login-service"));
+const login_services_1 = __importDefault(require("../services/login-services"));
 const validators_1 = __importDefault(require("../utils/validators"));
 // login function
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -22,7 +22,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
     const { name, password } = content;
     try {
-        const user = yield login_service_1.default.login(name, password);
+        const user = yield login_services_1.default.login(name, password);
         if (user) {
             req.session.loggedin = true;
             req.session.user_id = user._id;

@@ -12,12 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const eatery_service_1 = __importDefault(require("../services/eatery-service"));
+const eatery_services_1 = __importDefault(require("../services/eatery-services"));
 const validators_1 = __importDefault(require("../utils/validators"));
 // get all eateries list
 const getEateries = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const eateries = yield eatery_service_1.default.getEateries();
+        const eateries = yield eatery_services_1.default.getEateries();
         return res.status(200).send({
             status: 200,
             data: eateries,
@@ -37,7 +37,7 @@ const getEateryDetails = (req, res) => __awaiter(void 0, void 0, void 0, functio
         return;
     }
     try {
-        const eatery = yield eatery_service_1.default.getEateryDetails(id);
+        const eatery = yield eatery_services_1.default.getEateryDetails(id);
         return res.status(200).send({
             status: 200,
             data: eatery,
@@ -57,7 +57,7 @@ const addEatery = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return;
     }
     try {
-        yield eatery_service_1.default.addEatery(content);
+        yield eatery_services_1.default.addEatery(content);
         return res.status(201).send({
             status: 201,
             message: 'Eatery has been successfully added.',
@@ -78,7 +78,7 @@ const updateEatery = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         return;
     }
     try {
-        yield eatery_service_1.default.updateEatery(id, content);
+        yield eatery_services_1.default.updateEatery(id, content);
         return res.status(200).send({
             status: 200,
             message: 'Eatery has been updated.',
@@ -98,7 +98,7 @@ const deleteEatery = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         return;
     }
     try {
-        yield eatery_service_1.default.deleteEatery(id);
+        yield eatery_services_1.default.deleteEatery(id);
         return res.status(200).send({
             status: 200,
             message: 'Eatery has been deleted.',

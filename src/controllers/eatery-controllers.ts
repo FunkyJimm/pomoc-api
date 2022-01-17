@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import EateryService from "../services/eatery-service";
+import EateryService from "../services/eatery-services";
 import Validators from "../utils/validators";
 
 // get all eateries list

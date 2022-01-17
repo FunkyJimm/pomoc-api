@@ -12,12 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const information_service_1 = __importDefault(require("../services/information-service"));
+const information_services_1 = __importDefault(require("../services/information-services"));
 const validators_1 = __importDefault(require("../utils/validators"));
 // get all informations list
 const getInformations = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const informations = yield information_service_1.default.getInformations();
+        const informations = yield information_services_1.default.getInformations();
         return res.status(200).send({
             status: 200,
             data: informations,
@@ -37,7 +37,7 @@ const getInformationDetails = (req, res) => __awaiter(void 0, void 0, void 0, fu
         return;
     }
     try {
-        const information = yield information_service_1.default.getInformationDetails(id);
+        const information = yield information_services_1.default.getInformationDetails(id);
         return res.status(200).send({
             status: 200,
             data: information,
@@ -57,7 +57,7 @@ const addInformation = (req, res) => __awaiter(void 0, void 0, void 0, function*
         return;
     }
     try {
-        yield information_service_1.default.addInformation(content);
+        yield information_services_1.default.addInformation(content);
         return res.status(201).send({
             status: 201,
             message: 'Information has been successfully added.',
@@ -78,7 +78,7 @@ const updateInformation = (req, res) => __awaiter(void 0, void 0, void 0, functi
         return;
     }
     try {
-        yield information_service_1.default.updateInformation(id, content);
+        yield information_services_1.default.updateInformation(id, content);
         return res.status(200).send({
             status: 200,
             message: 'Information has been updated.',
@@ -98,7 +98,7 @@ const deleteInformation = (req, res) => __awaiter(void 0, void 0, void 0, functi
         return;
     }
     try {
-        yield information_service_1.default.deleteInformation(id);
+        yield information_services_1.default.deleteInformation(id);
         return res.status(200).send({
             status: 200,
             message: 'Information has been deleted.',

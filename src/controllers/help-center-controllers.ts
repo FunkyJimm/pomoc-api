@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import HelpCenterService from "../services/help-center-service";
+import HelpCenterService from "../services/help-center-services";
 import Validators from "../utils/validators";
 
 // get all help centers list

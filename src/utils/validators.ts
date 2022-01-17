@@ -17,7 +17,22 @@ const idCheck = function(res: Response, id: string) {
   }
 }
 
-// Mongoose validator options
+// Mongoose validators
+const zipCodeValidator = {
+  validator: (postal: string) => {
+    if (postal.length > 6) return false;
+
+    for (let i = 0; i < postal.length; i++) {
+        if (i == 2) {
+            if (postal[i] !== "-") return false;
+        } else {
+            if (isNaN(Number(postal[i]))) return false;
+        }
+    } return true;
+  },
+  message: 'You need to add correct zip code!'
+}
+
 const options = {
   runValidator: true,
   upsert: false,
@@ -26,5 +41,6 @@ const options = {
 export default {
   contentCheck,
   idCheck,
+  zipCodeValidator,
   options,
 }

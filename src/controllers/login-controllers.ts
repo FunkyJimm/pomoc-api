@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import LoginService from '../services/login-service';
+import LoginService from '../services/login-services';
 import validators from '../utils/validators';
 
 declare module 'express-session' {

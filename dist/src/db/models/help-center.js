@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
+const validators_1 = __importDefault(require("../../utils/validators"));
 const schema = new mongoose_1.Schema({
     name: {
         type: String,
@@ -20,24 +24,7 @@ const schema = new mongoose_1.Schema({
         type: String,
         required: [true, 'Zip code is required!'],
         minlength: 6,
-        validate: {
-            validator: (postal) => {
-                if (postal.length > 6)
-                    return false;
-                for (let i = 0; i < postal.length; i++) {
-                    if (i == 2) {
-                        if (postal[i] !== "-")
-                            return false;
-                    }
-                    else {
-                        if (isNaN(Number(postal[i])))
-                            return false;
-                    }
-                }
-                return true;
-            },
-            message: 'You need to add correct zip code!'
-        },
+        validate: validators_1.default.zipCodeValidator,
     },
     phone: {
         type: Number,
