@@ -5,7 +5,7 @@ import eateriesRoutes from './src/routes/eatery-routes';
 import helpCentersRoutes from './src/routes/help-center-routes';
 import informationsRoutes from './src/routes/information-routes';
 import loginRoutes from './src/routes/login-routes';
-import sheltersRoutes from './src/routes/shelters';
+import sheltersRoutes from './src/routes/shelters-routes';
 import usersRoutes from './src/routes/users';
 
 import dbConnect from './src/db/db-connect';

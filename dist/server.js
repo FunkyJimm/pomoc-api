@@ -9,7 +9,7 @@ const eatery_routes_1 = __importDefault(require("./src/routes/eatery-routes"));
 const help_center_routes_1 = __importDefault(require("./src/routes/help-center-routes"));
 const information_routes_1 = __importDefault(require("./src/routes/information-routes"));
 const login_routes_1 = __importDefault(require("./src/routes/login-routes"));
-const shelters_1 = __importDefault(require("./src/routes/shelters"));
+const shelters_routes_1 = __importDefault(require("./src/routes/shelters-routes"));
 const users_1 = __importDefault(require("./src/routes/users"));
 const db_connect_1 = __importDefault(require("./src/db/db-connect"));
 const session_handlers_1 = require("./src/helpers/session-handlers");
@@ -26,7 +26,7 @@ app.use('/', eatery_routes_1.default);
 app.use('/', help_center_routes_1.default);
 app.use('/', information_routes_1.default);
 app.use('/', login_routes_1.default);
-app.use('/', shelters_1.default);
+app.use('/', shelters_routes_1.default);
 app.use('/', [session_handlers_1.sessionCheck, users_1.default]);
 app.get('/', (req, res) => {
     res.send('Pomoc dla bezdomnych api by FunkyJimm. All rights reserved.');
