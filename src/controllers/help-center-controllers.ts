@@ -20,7 +20,7 @@ const getHelpCenters = async(req: Request, res: Response) => {
 
 // get help center details
 const getHelpCenterDetails = async(req: Request, res: Response) => {
-  const id = req.params.eateryId;
+  const id = req.params.helpcenterId;
   if (Validators.idCheck(res, id)) {
     return;
   }
@@ -62,7 +62,7 @@ const addHelpCenter = async(req: Request, res: Response) => {
 
 // update a help center
 const updateHelpCenter = async(req: Request, res: Response) => {
-  const id = req.params.eateryId;
+  const id = req.params.helpcenterId;
   const content = req.body;
   if (Validators.idCheck(res, id) || Validators.contentCheck(res, content)) {
     return;
@@ -84,7 +84,7 @@ const updateHelpCenter = async(req: Request, res: Response) => {
 
 // delete a help center
 const deleteHelpCenter = async(req: Request, res: Response) => {
-  const id = req.params.eateryId;
+  const id = req.params.helpcenterId;
   if (Validators.idCheck(res, id)) {
     return;
   }

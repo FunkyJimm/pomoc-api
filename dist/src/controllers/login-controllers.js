@@ -25,10 +25,11 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const user = yield login_services_1.default.login(name, password);
         if (user) {
             req.session.loggedin = true;
-            req.session.user_id = user._id;
+            req.session.user_id = user._id || user.id;
             return res.status(200).send({
                 status: 200,
                 message: 'Logged in successfully!',
+                name: name,
             });
         }
         else {

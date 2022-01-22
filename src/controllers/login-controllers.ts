@@ -22,10 +22,11 @@ const login = async (req: Request, res: Response) => {
     const user = await LoginService.login(name, password)
     if (user) {
       req.session.loggedin = true;
-      req.session.user_id = user._id;
+      req.session.user_id = user._id || user.id;
       return res.status(200).send({
         status: 200,
         message: 'Logged in successfully!',
+        name: name,
       });
     } else {
       throw Error('You have no permission');

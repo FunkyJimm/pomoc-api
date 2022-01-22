@@ -32,7 +32,7 @@ const getHelpCenters = (req, res) => __awaiter(void 0, void 0, void 0, function*
 });
 // get help center details
 const getHelpCenterDetails = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.eateryId;
+    const id = req.params.helpcenterId;
     if (validators_1.default.idCheck(res, id)) {
         return;
     }
@@ -72,7 +72,7 @@ const addHelpCenter = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 });
 // update a help center
 const updateHelpCenter = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.eateryId;
+    const id = req.params.helpcenterId;
     const content = req.body;
     if (validators_1.default.idCheck(res, id) || validators_1.default.contentCheck(res, content)) {
         return;
@@ -93,7 +93,7 @@ const updateHelpCenter = (req, res) => __awaiter(void 0, void 0, void 0, functio
 });
 // delete a help center
 const deleteHelpCenter = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.eateryId;
+    const id = req.params.helpcenterId;
     if (validators_1.default.idCheck(res, id)) {
         return;
     }
