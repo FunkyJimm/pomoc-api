@@ -24,6 +24,7 @@ const getEateries = function () {
             return eateries.map(eatery => ({
                 id: eatery.id,
                 name: eatery.name,
+                coordinates: eatery.coordinates,
                 mealsAvailability: eatery.mealsAvailability,
             }));
         }
@@ -48,9 +49,9 @@ const getEateryDetails = function (id) {
 };
 const addEatery = function (content) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { name, address, city, zipCode, phone } = content;
+        const { name, address, city, zipCode, coordinates, phone } = content;
         const publicationDate = Date.now();
-        const eatery = new eatery_1.default({ name, address, city, zipCode, phone, publicationDate });
+        const eatery = new eatery_1.default({ name, address, city, zipCode, coordinates, phone, publicationDate });
         try {
             yield eatery.save();
         }

@@ -11,6 +11,7 @@ const getEateries = async function() {
       {
         id: eatery.id,
         name: eatery.name,
+        coordinates: eatery.coordinates,
         mealsAvailability: eatery.mealsAvailability,
       }
     ));
@@ -32,9 +33,9 @@ const getEateryDetails = async function(id: string) {
 }
 
 const addEatery = async function(content: any) {
-  const { name, address, city, zipCode, phone } = content;
+  const { name, address, city, zipCode, coordinates, phone } = content;
   const publicationDate = Date.now();
-  const eatery = new Eatery({ name, address, city, zipCode, phone, publicationDate });
+  const eatery = new Eatery({ name, address, city, zipCode, coordinates, phone, publicationDate });
 
   try {
     await eatery.save()

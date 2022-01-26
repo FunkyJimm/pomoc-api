@@ -3,9 +3,10 @@ import Validators from '../../utils/validators';
 
 interface Eatery {
   name: string;
-  address: string;
+  address: object;
   city: string;
   zipCode: string;
+  coordinates: object;
   phone: number;
   mealsAvailability: boolean;
 }
@@ -18,7 +19,7 @@ const schema = new Schema<Eatery>({
     maxlength: 256,
   },
   address: {
-    type: String,
+    type: Object,
     required: [true, 'Address is required!'],
   },
   city: {
@@ -30,6 +31,10 @@ const schema = new Schema<Eatery>({
     required: [true, 'Zip code is required!'],
     minlength: 6,
     validate: Validators.zipCodeValidator,
+  },
+  coordinates: {
+    type: { lat: Number, lon: Number },
+    required: [true, 'Coordinates is required!'],
   },
   phone: {
     type: Number,

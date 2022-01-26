@@ -11,6 +11,7 @@ const getShelters = async function() {
       {
         id: shelter._id,
         name: shelter.name,
+        coordinates: shelter.coordinates,
         totalNumberOfBeds: shelter.totalNumberOfBeds,
         occupiedNumberOfBeds: shelter.occupiedNumberOfBeds,
       }
@@ -33,9 +34,9 @@ const getShelterDetails = async function(id: string) {
 }
 
 const addShelter = async function(content: any) {
-  const { name, address, city, zipCode, phone, totalNumberOfBeds } = content;
+  const { name, address, city, zipCode, coordinates, phone, totalNumberOfBeds } = content;
   const publicationDate = Date.now();
-  const shelter = new Shelter({ name, address, city, zipCode, phone, totalNumberOfBeds, publicationDate });
+  const shelter = new Shelter({ name, address, city, zipCode, coordinates, phone, totalNumberOfBeds, publicationDate });
 
   try {
     await shelter.save()
@@ -49,6 +50,10 @@ const updateShelter = async function(id: string, content: any) {
   const updateDate = Date.now();
 
   try {
+    if (occupiedNumberOfBeds > totalNumberOfBeds) {
+      throw Error('Occupied number of beds can not be higher than total number of beds.');
+    }
+
     const shelter = await Shelter.findByIdAndUpdate(id, { name, address, city, zipCode, phone, totalNumberOfBeds, occupiedNumberOfBeds, updateDate }, Validators.options)
     if (!shelter) {
       throw Error(`Shelter with Id: ${id} is not found.`);

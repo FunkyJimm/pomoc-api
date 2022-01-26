@@ -3,9 +3,10 @@ import Validators from '../../utils/validators';
 
 interface Shelter {
   name: string;
-  address: string;
+  address: object;
   city: string;
   zipCode: string;
+  coordinates: object;
   phone: number;
   totalNumberOfBeds: number;
   occupiedNumberOfBeds: number;
@@ -19,7 +20,7 @@ const schema = new Schema<Shelter>({
     maxlength: 256,
   },
   address: {
-    type: String,
+    type: Object,
     required: [true, 'Address is required!'],
   },
   city: {
@@ -32,6 +33,10 @@ const schema = new Schema<Shelter>({
     minlength: 6,
     validate: Validators.zipCodeValidator,
   },
+  coordinates: {
+    type: { lat: Number, lon: Number },
+    required: [true, 'Coordinates is required!'],
+  },
   phone: {
     type: Number,
     required: false,
@@ -43,6 +48,7 @@ const schema = new Schema<Shelter>({
   occupiedNumberOfBeds: {
     type: Number,
     required: false,
+    default: 0,
   },
 });
 

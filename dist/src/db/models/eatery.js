@@ -13,7 +13,7 @@ const schema = new mongoose_1.Schema({
         maxlength: 256,
     },
     address: {
-        type: String,
+        type: Object,
         required: [true, 'Address is required!'],
     },
     city: {
@@ -25,6 +25,10 @@ const schema = new mongoose_1.Schema({
         required: [true, 'Zip code is required!'],
         minlength: 6,
         validate: validators_1.default.zipCodeValidator,
+    },
+    coordinates: {
+        type: { lat: Number, lon: Number },
+        required: [true, 'Coordinates is required!'],
     },
     phone: {
         type: Number,

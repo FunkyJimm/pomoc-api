@@ -24,6 +24,7 @@ const getShelters = function () {
             return shelters.map(shelter => ({
                 id: shelter._id,
                 name: shelter.name,
+                coordinates: shelter.coordinates,
                 totalNumberOfBeds: shelter.totalNumberOfBeds,
                 occupiedNumberOfBeds: shelter.occupiedNumberOfBeds,
             }));
@@ -49,9 +50,9 @@ const getShelterDetails = function (id) {
 };
 const addShelter = function (content) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { name, address, city, zipCode, phone, totalNumberOfBeds } = content;
+        const { name, address, city, zipCode, coordinates, phone, totalNumberOfBeds } = content;
         const publicationDate = Date.now();
-        const shelter = new schelter_1.default({ name, address, city, zipCode, phone, totalNumberOfBeds, publicationDate });
+        const shelter = new schelter_1.default({ name, address, city, zipCode, coordinates, phone, totalNumberOfBeds, publicationDate });
         try {
             yield shelter.save();
         }
@@ -65,6 +66,9 @@ const updateShelter = function (id, content) {
         const { name, address, city, zipCode, phone, totalNumberOfBeds, occupiedNumberOfBeds } = content;
         const updateDate = Date.now();
         try {
+            if (occupiedNumberOfBeds > totalNumberOfBeds) {
+                throw Error('Occupied number of beds can not be higher than total number of beds.');
+            }
             const shelter = yield schelter_1.default.findByIdAndUpdate(id, { name, address, city, zipCode, phone, totalNumberOfBeds, occupiedNumberOfBeds, updateDate }, validators_1.default.options);
             if (!shelter) {
                 throw Error(`Shelter with Id: ${id} is not found.`);
